@@ -1,0 +1,109 @@
+backend:
+  name: github
+  repo: barrettk8090/barretts-world-wide-web
+  branch: main
+  
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # Personal Blog
+  - name: "personal-blog"
+    label: "Personal Blog"
+    folder: "content/personal-blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+  # Fiction Stories
+  - name: "fiction"
+    label: "Fiction Stories"
+    folder: "content/fiction"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Story", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+
+  # Short Form Posts
+  - name: "short-form"
+    label: "Short Form"
+    folder: "content/short-form"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content", name: "body", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Learning
+  - name: "what-im-learning"
+    label: "What I'm Learning"
+    folder: "content/learning"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content", name: "body", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Watching
+  - name: "what-im-watching"
+    label: "What I'm Watching"
+    folder: "content/watching"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content", name: "body", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Reading
+  - name: "what-im-reading"
+    label: "What I'm Reading"
+    folder: "content/reading"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content", name: "body", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Searching
+  - name: "what-im-searching"
+    label: "What I'm Searching"
+    folder: "content/searching"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content", name: "body", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+
+  # Photo Stream
+  - name: "photos"
+    label: "Photo Stream"
+    folder: "content/photos"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title/Caption", name: "title", widget: "string", required: false }
+      - { label: "Date Taken", name: "date", widget: "datetime" }
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Camera Settings", name: "exif", widget: "text", required: false }
