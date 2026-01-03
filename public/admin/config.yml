@@ -2,6 +2,7 @@ backend:
   name: github
   repo: barrettk8090/barretts-world-wide-web
   branch: main
+  site_domain: https://barrettkowalsky.netlify.app
   
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
