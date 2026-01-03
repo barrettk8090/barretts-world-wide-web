@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar(){
 
     return (
         <div>
-            <p>this is the navbar:</p>
+            <p>navigate around the web:</p>
             <ul>
-                <li>i'm taking photos</li>
-                <li>i'm writing fiction</li>
-                <li>i'm writing personal stuff</li>
-                <li>i'm learning</li>
-                <li>i'm watching</li>
-                <li>i'm reading</li>
-                <li>i'm searching</li>
-                <li>i'm coding</li>
+                <li><Link to="/photos">i'm taking photos</Link></li>
+                <li><Link to="/writing">i'm writing fiction</Link></li>
+                <li><Link to="/blog">i'm writing personal stuff</Link></li>
+                <li><Link to="/learning">i'm learning</Link></li>
+                <li><Link to="/watching">i'm watching</Link></li>
+                <li><Link to="/reading">i'm reading</Link></li>
+                <li><Link to="/searching">i'm searching</Link></li>
+                <li><a href="https://github.com/barrettk8090">i'm coding</a></li>
             </ul>
         </div>
     );

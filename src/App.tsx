@@ -1,20 +1,32 @@
-import Navbar from './components/Navbar'
-import Experience from './components/Experience'
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+
 import './App.css'
+import Photos from './pages/Photos';
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>barrett's www</h1>
-        <p>barrett kowalsky – a guy doing many different things. based in denver, co.</p>
-        <p>🚧 this site is under active construction, partner 🤠. please wear a hardhat while navigating. 👷‍♂️</p>
-        <Navbar/>
-        <Experience/>
-        <Footer/>
-      </div>
+    <Router> 
+      <Navbar/>
+      <Routes>
+        <Route 
+          path="/"
+          element={<Home/>}/>  
+        <Route
+          path="/photos"
+          element={<Photos/>}/>
+      </Routes>
+    </Router>
+    <Footer/>
     </>
   )
 }
