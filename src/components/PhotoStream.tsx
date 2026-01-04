@@ -56,21 +56,21 @@ export function PhotoStream() {
   if (photos.length === 0) {
     return (
       <div>
-        <p>No photos yet! Upload your first photo at <code>/admin</code></p>
+        <p>Photos are MIA... rip 💀</p>
       </div>
     );
   }
 
   return (
     <div className="photo-stream">
-      <h1>Photo Stream</h1>
+      <h1>los photos</h1>
       <div className="photo-grid">
         {photos.map(photo => (
           <div key={photo.slug} className="photo-item">
             {photo.image && (
-              <img src={photo.image} alt={photo.title || 'Photo'} />
+              <img className="photo-post"src={photo.image} alt={photo.title || 'Photo'} />
             )}
-            {photo.title && <h3>{photo.title}</h3>}
+            {/* {photo.title && <h3>{photo.title}</h3>} */}
             {photo.description && <p>{photo.description}</p>}
             <time>{new Date(photo.date).toLocaleDateString()}</time>
             {photo.location && <span className="location">📍 {photo.location}</span>}
