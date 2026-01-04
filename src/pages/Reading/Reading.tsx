@@ -1,3 +1,5 @@
+import './Reading.module.css'
+
 export default function Reading(){
     return(
         <>

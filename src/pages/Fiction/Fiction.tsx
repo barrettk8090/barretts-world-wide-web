@@ -1,3 +1,5 @@
+import './Fiction.module.css'
+
 export default function Fiction(){
     return(
         <>

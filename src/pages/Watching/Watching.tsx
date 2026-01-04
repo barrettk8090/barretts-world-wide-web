@@ -1,3 +1,5 @@
+import './Watching.module.css'
+
 export default function Watching(){
     return(
         <>

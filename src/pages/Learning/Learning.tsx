@@ -1,3 +1,5 @@
+import './Learning.module.css'
+
 export default function Learning(){
     return(
         <>
