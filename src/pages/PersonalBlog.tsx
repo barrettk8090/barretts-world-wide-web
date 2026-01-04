@@ -1,7 +1,9 @@
+import { PersonalBlogPosts } from "../components/PersonalBlog"
+
 export default function PersonalBlog(){
     return(
         <>
-        <p> coming soon </p>
+            <PersonalBlogPosts/>
         </>
     )
 }

@@ -10,6 +10,12 @@ import {
 
 import './App.css'
 import Photos from './pages/Photos';
+import Fiction from './pages/Fiction';
+import PersonalBlog from './pages/PersonalBlog';
+import Learning from './pages/Learning';
+import Watching from './pages/Watching';
+import Reading from './pages/Reading';
+import Searching from './pages/Searching';
 
 function App() {
 
@@ -24,6 +30,24 @@ function App() {
         <Route
           path="/photos"
           element={<Photos/>}/>
+        <Route
+          path="/fiction"
+          element={<Fiction/>}/>
+        <Route
+          path="/blog"
+          element={<PersonalBlog/>}/>
+        <Route
+          path="/learning"
+          element={<Learning/>}/>
+        <Route
+          path="/watching"
+          element={<Watching/>}/>
+        <Route
+          path="/reading"
+          element={<Reading/>}/>
+        <Route
+          path="/searching"
+          element={<Searching/>}/>
       </Routes>
     </Router>
     <Footer/>

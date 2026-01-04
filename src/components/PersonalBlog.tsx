@@ -3,7 +3,7 @@ import { parseFrontmatter } from '../utils/contentLoader';
 import type { Post } from '../utils/contentLoader';
 
 // Example: Display personal blog posts
-export function PersonalBlog() {
+export function PersonalBlogPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
