@@ -17,10 +17,8 @@ h1, h2, h3, h4, h5, h6, p, li {
 .blog-posts{
     max-width: 85%;
     margin: auto;
-}
-
-.ReactMarkdown{
-    line-height: 2.8;
+    line-height: 1.6;
+    padding: 20px;
 }
 
 .photo-post{
