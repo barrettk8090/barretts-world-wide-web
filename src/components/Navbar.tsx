@@ -8,7 +8,7 @@ export default function Navbar(){
             <ul>
                 <li><Link to="/">🏠</Link></li>
                 <li><Link to="/photos">i'm taking photos</Link></li>
-                <li><Link to="/writing">i'm writing fiction</Link></li>
+                <li><Link to="/fiction">i'm writing fiction</Link></li>
                 <li><Link to="/blog">i'm writing personal stuff</Link></li>
                 <li><Link to="/learning">i'm learning</Link></li>
                 <li><Link to="/watching">i'm watching</Link></li>

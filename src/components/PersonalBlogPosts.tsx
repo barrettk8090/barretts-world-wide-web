@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { parseFrontmatter } from '../utils/contentLoader';
 import type { Post } from '../utils/contentLoader';
 
-// Example: Display personal blog posts
 export function PersonalBlogPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,6 @@ export function PersonalBlogPosts() {
 
   async function loadPosts() {
     try {
-      // Use Vite's glob import to load all markdown files
       const postModules = import.meta.glob('/content/personal-blog/*.md', { 
         as: 'raw'
       });
@@ -35,7 +34,6 @@ export function PersonalBlogPosts() {
         });
       }
 
-      // Sort by date, newest first
       loadedPosts.sort((a, b) => 
         new Date(b.date).getTime() - new Date(a.date).getTime()
       );
@@ -62,7 +60,7 @@ export function PersonalBlogPosts() {
 
   return (
     <div className="blog-posts">
-      <h1>Personal Blog</h1>
+      <h1>bloggy</h1>
       {posts.map(post => (
         <article key={post.slug} className="post">
           <h2>{post.title}</h2>
@@ -71,8 +69,7 @@ export function PersonalBlogPosts() {
             <img src={post.featuredImage} alt={post.title} />
           )}
           <div className="post-body">
-            {/* You'll want to use react-markdown here */}
-            {post.body.substring(0, 200)}...
+            <ReactMarkdown>{post.body}</ReactMarkdown>
           </div>
           {post.tags && post.tags.length > 0 && (
             <div className="tags">
