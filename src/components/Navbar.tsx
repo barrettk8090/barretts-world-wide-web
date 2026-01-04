@@ -4,8 +4,9 @@ export default function Navbar(){
 
     return (
         <div>
-            <p>navigate around the web:</p>
+            <p>navigate what im doing:</p>
             <ul>
+                <li><Link to="/">🏠</Link></li>
                 <li><Link to="/photos">i'm taking photos</Link></li>
                 <li><Link to="/writing">i'm writing fiction</Link></li>
                 <li><Link to="/blog">i'm writing personal stuff</Link></li>
