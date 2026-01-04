@@ -59,7 +59,7 @@ export function PersonalBlogPosts() {
   }
 
   return (
-    <div className="blog-posts">
+    <div className="blog-posts-container">
       <h1>bloggy</h1>
       {posts.map(post => (
         <article key={post.slug} className="post">

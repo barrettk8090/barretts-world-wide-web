@@ -4,6 +4,7 @@ export default function Navbar(){
 
     return (
         <div>
+            <h1>🌐 barrett's world wide web</h1>
             <p>navigate what im doing:</p>
             <ul>
                 <li><Link to="/">🏠</Link></li>
@@ -16,6 +17,7 @@ export default function Navbar(){
                 <li><Link to="/searching">i'm searching</Link></li>
                 <li><a href="https://github.com/barrettk8090">i'm coding</a></li>
             </ul>
+            <hr/>
         </div>
     );
 }

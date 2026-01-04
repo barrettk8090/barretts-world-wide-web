@@ -62,7 +62,7 @@ export function PhotoStream() {
 
   return (
     <div className="photo-stream">
-      <h1>los photos</h1>
+      <h1>photo stream</h1>
       <div className="photo-grid">
         {photos.map(photo => (
           <div key={photo.slug} className="photo-item">
@@ -71,7 +71,7 @@ export function PhotoStream() {
             )}
             {/* HIDDEN: PHOTO TITLES {photo.title && <h3>{photo.title}</h3>} */}
             {photo.description && <p>{photo.description}</p>}
-            <time>{new Date(photo.date).toLocaleDateString()}</time>
+            <br/><time>^{new Date(photo.date).toLocaleDateString()}</time>
             {photo.location && <span className="location">📍 {photo.location}</span>}
             {photo.exif && <details className="exif"><summary>Camera Info</summary>{photo.exif}</details>}
           </div>
