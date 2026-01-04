@@ -7,11 +7,20 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-  }
+}
   
 
 h1, h2, h3, h4, h5, h6, p, li {
     font-family: "Lora";
+}
+
+.blog-posts{
+    max-width: 85%;
+    margin: auto;
+}
+
+.ReactMarkdown{
+    line-height: 2.8;
 }
 
 .photo-post{
