@@ -1,4 +1,4 @@
-import './Reading.module.css'
+import './Reading.css'
 
 export default function Reading(){
     return(

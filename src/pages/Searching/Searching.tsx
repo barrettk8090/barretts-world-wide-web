@@ -1,3 +1,5 @@
+import './Searching.css'
+
 export default function Searching(){
     return(
         <>

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { parseFrontmatter } from '../utils/contentLoader';
 import type { Post } from '../utils/contentLoader';
 
-// Example: Display photo stream
 export function PhotoStream() {
   const [photos, setPhotos] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -70,7 +69,7 @@ export function PhotoStream() {
             {photo.image && (
               <img className="photo-post"src={photo.image} alt={photo.title || 'Photo'} />
             )}
-            {/* {photo.title && <h3>{photo.title}</h3>} */}
+            {/* HIDDEN: PHOTO TITLES {photo.title && <h3>{photo.title}</h3>} */}
             {photo.description && <p>{photo.description}</p>}
             <time>{new Date(photo.date).toLocaleDateString()}</time>
             {photo.location && <span className="location">📍 {photo.location}</span>}

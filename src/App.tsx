@@ -13,9 +13,9 @@ import Photos from './pages/Photos/Photos';
 import Fiction from './pages/Fiction/Fiction';
 import PersonalBlog from './pages/PersonalBlog/PersonalBlog';
 import Learning from './pages/Learning/Learning';
-import Watching from './pages/Watching';
-import Reading from './pages/Reading';
-import Searching from './pages/Searching';
+import Watching from './pages/Watching/Watching';
+import Reading from './pages/Reading/Reading';
+import Searching from './pages/Searching/Searching';
 
 function App() {
 

@@ -1,10 +1,10 @@
 import { PhotoStream } from "../../components/PhotoStream"
-import './Photos.module.css'
+import './Photos.css'
 
 export default function Photos(){
     return(
-        <>
-        <PhotoStream/>
-        </>
+        <div>
+            <PhotoStream/>
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-import './Watching.module.css'
+import './Watching.css'
 
 export default function Watching(){
     return(

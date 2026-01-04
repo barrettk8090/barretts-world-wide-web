@@ -1,4 +1,4 @@
-import './Learning.module.css'
+import './Learning.css'
 
 export default function Learning(){
     return(

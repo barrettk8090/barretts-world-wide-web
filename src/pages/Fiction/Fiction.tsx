@@ -1,4 +1,4 @@
-import './Fiction.module.css'
+import './Fiction.css'
 
 export default function Fiction(){
     return(
