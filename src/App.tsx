@@ -9,7 +9,13 @@ import {
 
 
 import './App.css'
-import Photos from './pages/Photos';
+import Photos from './pages/Photos/Photos';
+import Fiction from './pages/Fiction/Fiction';
+import PersonalBlog from './pages/PersonalBlog/PersonalBlog';
+import Learning from './pages/Learning/Learning';
+import Watching from './pages/Watching/Watching';
+import Reading from './pages/Reading/Reading';
+import Searching from './pages/Searching/Searching';
 
 function App() {
 
@@ -24,6 +30,24 @@ function App() {
         <Route
           path="/photos"
           element={<Photos/>}/>
+        <Route
+          path="/fiction"
+          element={<Fiction/>}/>
+        <Route
+          path="/blog"
+          element={<PersonalBlog/>}/>
+        <Route
+          path="/learning"
+          element={<Learning/>}/>
+        <Route
+          path="/watching"
+          element={<Watching/>}/>
+        <Route
+          path="/reading"
+          element={<Reading/>}/>
+        <Route
+          path="/searching"
+          element={<Searching/>}/>
       </Routes>
     </Router>
     <Footer/>
