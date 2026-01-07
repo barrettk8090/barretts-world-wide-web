@@ -28,7 +28,7 @@ function App() {
           path="/"
           element={<Home/>}/>  
         <Route
-          path="/photos"
+          path="/camera-roll"
           element={<Photos/>}/>
         <Route
           path="/fiction"
