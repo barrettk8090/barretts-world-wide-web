@@ -42,14 +42,14 @@ export default function Navbar(){
             <p>navigate what im doing:</p>
             <div>
                 
-                <span onClick={() => togglePhotoMenu()}>photos </span> 
-            / 
-                <span onClick={() => toggleWritingMenu()}> writing</span> /
-                <span onClick={() => toggleMiscMenu()}> misc</span>
+                <span className="nav-item-top" onClick={() => togglePhotoMenu()}>photos </span> / 
+                <span className="nav-item-top"  onClick={() => toggleWritingMenu()}> writing</span> /
+                <span className="nav-item-top"> <Link to="/projects">projects </Link></span> / 
+                <span className="nav-item-top"  onClick={() => toggleMiscMenu()}> misc</span>
 
                 { openPhotos ? 
                     <ul>
-                            <li><Link to="/photos">photography</Link></li>
+                            <li><Link to="/photography">photography</Link></li>
                             <li><Link to="/camera-roll">camera roll</Link></li>
                     </ul> : <></>
                 }
@@ -59,7 +59,7 @@ export default function Navbar(){
                         <ul>
                             <li><Link to="/blog">blog</Link></li>
                             <li><Link to="/fiction">fiction</Link></li>
-                            <li>developer content</li> 
+                            <li><Link to="/dev-content">developer content</Link></li> 
                             <li><a href="https://github.com/barrettk8090">code</a></li>
                         </ul> : <></>
                 }

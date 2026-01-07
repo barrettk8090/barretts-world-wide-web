@@ -13,3 +13,10 @@ body {
 h1, h2, h3, h4, h5, h6, p, li {
     font-family: "Lora";
 }
+
+
+.nav-item-top{
+    font-size:1.6rem;
+    text-decoration: underline;
+    color:blue;
+}
