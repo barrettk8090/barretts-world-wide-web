@@ -47,11 +47,12 @@ export default function Navbar(){
                 <span className="nav-item-top"> <Link to="/projects">projects </Link></span> / 
                 <span className="nav-item-top"  onClick={() => toggleMiscMenu()}> misc</span>
 
-                { openPhotos ? 
-                    <ul>
-                            <li><Link to="/photography">photography</Link></li>
-                            <li><Link to="/camera-roll">camera roll</Link></li>
-                    </ul> : <></>
+                { 
+                    openPhotos ? 
+                        <ul>
+                                <li><Link to="/photography">photography</Link></li>
+                                <li><Link to="/camera-roll">camera roll</Link></li>
+                        </ul> : <></>
                 }
 
                 {
