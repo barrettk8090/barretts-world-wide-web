@@ -1,4 +1,3 @@
-// import { PhotoStream } from "../../components/PhotoStream"
 import { useEffect, useState } from 'react';
 import { listAllImages } from '../../services/cloudflareImageFetch';
 import type { CloudflareImage } from '../../services/cloudflareImageFetch';
@@ -27,15 +26,15 @@ export default function Photos() {
 
   return (
     <div>
-      <h1>my camera roll</h1>
-      {/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
+      <h1>my camera roll :)</h1>
       { images && (
-        <div>
+        <div className="photo-stream">
             {images.map((singleImage, index) => 
                 <img 
                   key={singleImage.id || index} 
                   src={singleImage.variants?.[0] ?? String(singleImage.variants)} 
                   alt={singleImage.filename}
+                  className="photo-post"
                 />
             )}
         </div>    

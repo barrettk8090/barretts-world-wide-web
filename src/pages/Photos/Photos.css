@@ -1,7 +1,14 @@
 .photo-post{
-    max-width: 100%; 
+    display: block;
+    max-width: 900px; 
     max-height: 80vh;
+    padding-bottom: 10px;
 }
+@media (max-width: 590px) {
+    .photo-post {
+     max-width: 100%;
+    }
+ }
 
 .photo-stream{
     margin: auto;
