@@ -1,3 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-stream{
+    margin: auto;
+}
+
 .photo-post{
     display: block;
     max-width: 900px; 
@@ -10,6 +20,3 @@
     }
  }
 
-.photo-stream{
-    margin: auto;
-}

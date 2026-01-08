@@ -25,8 +25,9 @@ export default function Photos() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <>
       <h1>my camera roll :)</h1>
+      <div className="container">
       { images && (
         <div className="photo-stream">
             {images.map((singleImage, index) => 
@@ -40,5 +41,6 @@ export default function Photos() {
         </div>    
       )}
     </div>
+    </>
   );
 }
