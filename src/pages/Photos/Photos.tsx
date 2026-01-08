@@ -11,7 +11,7 @@ export default function Photos() {
   useEffect(() => {
     listAllImages()
       .then((data) => {
-        console.log('Images received:', data);
+        // console.log('Images received:', data);
         setImages(data);
       })
       .catch((err) => {
@@ -24,13 +24,17 @@ export default function Photos() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const personalPhotos = images.filter(
+    (img) => img.meta?.category === 'personal'
+  );
+
   return (
     <>
       <h1>my camera roll :)</h1>
       <div className="container">
-      { images && (
+      { personalPhotos.length > 0 && (
         <div className="photo-stream">
-            {images.map((singleImage, index) => 
+            {personalPhotos.map((singleImage, index) => 
                 <img 
                   key={singleImage.id || index} 
                   src={singleImage.variants?.[0] ?? String(singleImage.variants)} 

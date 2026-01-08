@@ -3,10 +3,10 @@ import type { Handler } from '@netlify/functions';
 const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 const API_TOKEN = process.env.CLOUDFLARE_IMAGES_TOKEN;
 
-export const handler: Handler = async () => {
+export const handler: Handler = async (event) => {
     //TODO: set a photo metadata process for prof/personal photos, add async (event)
-    //const tag = event.queryStringParameters?.tag;
-    //const value = event.queryStringParameters?.tag;
+    const category = event.queryStringParameters?.category;
+    const value = event.queryStringParameters?.tag;
 
     try {
         const response = await fetch(
@@ -27,11 +27,11 @@ export const handler: Handler = async () => {
             };
         }
 
-        const images = data.result.images;
+        let images = data.result.images;
 
-        // if (tag && value) {
-        //     images = images.filter((img: any) => img.metadata?.[tag] === value);
-        //   }
+        if (category && value) {
+            images = images.filter((img) => img.meta?.[category] === value);
+          }
 
         return {
             statusCode: 200,

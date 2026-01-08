@@ -1,7 +1,11 @@
 export interface CloudflareImage {
     id: string;
     filename: string;
-    metadata: Record<string, string>;
+    meta?: {
+      category?: 'personal' | 'professional';
+      alt_text?: string;
+    };
+    requireSignedURLs: boolean;
     uploaded: string;
     variants: string[];
   }
