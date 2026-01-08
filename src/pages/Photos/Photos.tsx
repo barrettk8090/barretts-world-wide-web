@@ -1,10 +1,11 @@
 // import { PhotoStream } from "../../components/PhotoStream"
 import { useEffect, useState } from 'react';
 import { listAllImages } from '../../services/cloudflareImageFetch';
+import type { CloudflareImage } from '../../services/cloudflareImageFetch';
 import './Photos.css';
 
 export default function Photos() {
-  const [images, setImages] = useState<unknown[]>([]);
+  const [images, setImages] = useState<CloudflareImage[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,8 +31,12 @@ export default function Photos() {
       {/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
       { images && (
         <div>
-            {images.map(singleImage => 
-                <img src={singleImage.variants}/>
+            {images.map((singleImage, index) => 
+                <img 
+                  key={singleImage.id || index} 
+                  src={singleImage.variants?.[0] ?? String(singleImage.variants)} 
+                  alt={singleImage.filename}
+                />
             )}
         </div>    
       )}

@@ -1,4 +1,4 @@
-interface CloudflareImage {
+export interface CloudflareImage {
     id: string;
     filename: string;
     metadata: Record<string, string>;
