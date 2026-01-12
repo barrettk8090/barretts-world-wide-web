@@ -1,12 +1,7 @@
+import type { Book } from '../pages/Reading/Reading';
+
 interface SingleBookProps {
-    bookDetails: {
-        image?: string;
-        title: string;
-        author: string;
-        rating?: number;
-        commentary?: string;
-        [key: string]: string | number | undefined;
-    };
+    bookDetails: Book;
 }
 
 function ratingToStars(rating: number): string {
