@@ -12,12 +12,12 @@ export default function SingleBook({ bookDetails }: SingleBookProps) {
 
     return (
         <div className="book-card">
-            <img src={bookDetails?.image}></img>
-            <ul>
+            <img className="book-img" src={bookDetails?.image}></img>
+            <div className="book-deets">
                 <li>{bookDetails.title}</li>
                 <li>{bookDetails.author}</li>
                 <li>{bookDetails?.commentary}</li>
-            </ul>
+            </div>
         </div>
     )
 }
