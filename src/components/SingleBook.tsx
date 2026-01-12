@@ -3,9 +3,14 @@ interface SingleBookProps {
         image?: string;
         title: string;
         author: string;
+        rating?: number;
         commentary?: string;
-        [key: string]: string | undefined;
+        [key: string]: string | number | undefined;
     };
+}
+
+function ratingToStars(rating: number): string {
+    return '⭐'.repeat(rating);
 }
 
 export default function SingleBook({ bookDetails }: SingleBookProps) {
@@ -16,6 +21,9 @@ export default function SingleBook({ bookDetails }: SingleBookProps) {
             <div className="book-deets">
                 <p className="book-title">{bookDetails.title}</p>
                 <p>{bookDetails.author}</p>
+                {bookDetails.rating && (
+                    <p className="book-rating">{ratingToStars(bookDetails.rating)}</p>
+                )}
                 {bookDetails.commentary ? (
                     <p className="commentary">{bookDetails.commentary}</p>
                 ) : null}
