@@ -14,9 +14,11 @@ export default function SingleBook({ bookDetails }: SingleBookProps) {
         <div className="book-card">
             <img className="book-img" src={bookDetails?.image}></img>
             <div className="book-deets">
-                <li>{bookDetails.title}</li>
-                <li>{bookDetails.author}</li>
-                <li>{bookDetails?.commentary}</li>
+                <p className="book-title">{bookDetails.title}</p>
+                <p>{bookDetails.author}</p>
+                {bookDetails.commentary ? (
+                    <p className="commentary">{bookDetails.commentary}</p>
+                ) : null}
             </div>
         </div>
     )

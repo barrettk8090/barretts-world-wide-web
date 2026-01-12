@@ -1,4 +1,5 @@
 import './Reading.css'
+import bookshelfImage from '../../assets/bk-bookshelf.jpeg'
 import SingleBook from '../../components/SingleBook'
 
 export interface Book {
@@ -26,7 +27,7 @@ const books2025:Array<Book> = [
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1431014197i/25499718._SX600_.jpg",
         currentlyReading: false,
         rating : 5,
-        commentary : "",
+        commentary : "While I was reading this there was a spider living in the corner of my shower and i thought about her constantly and i could not kill her and i just fell even more deeply in love with spiders.",
     },
     { 
         title: "I Who Have Never Known Men",
@@ -98,7 +99,7 @@ const books2025:Array<Book> = [
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1715780755i/211721806._SX600_.jpg",
         currentlyReading: false,
         rating : 5,
-        commentary : "",
+        commentary : "This entire series literally MADE MY YEAR!!!!!!!",
     },
     { 
         title: "Carl's Doomsday Scenario, DCC #2",
@@ -181,12 +182,12 @@ const books2025:Array<Book> = [
         commentary : "",
     },
     { 
-        title: "Stor of Your Life and Others",
+        title: "Stories of Your Life and Others",
         author : "Ted Chiang",
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1478010711i/31625351._SX600_.jpg",
         currentlyReading: false,
         rating : 5,
-        commentary : "",
+        commentary : "Had already seen Arrival but all of these stories were so unique and so interesting",
     },
     { 
         title: "You Weren't Meant to be Human",
@@ -194,7 +195,7 @@ const books2025:Array<Book> = [
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1756129048i/224004327._SX600_.jpg",
         currentlyReading: false,
         rating : 4,
-        commentary : "",
+        commentary : "Had to take a little break from this one halfway thru as i dealt with my own little internal horrors.",
     },
 ]
 
@@ -211,7 +212,7 @@ const books2026:Array<Book> = [
     {
         title: "The Drawing of the Three, The Dark Tower #2",
         author: "Stephen King",
-        image: "",
+        image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1312346702i/1010040._SX600_.jpg",
         currentlyReading: false,
         rating: 5,
         commentary: "I was hooting and hollering throughout. Also a much better pace than book 1.",
@@ -223,7 +224,7 @@ const books2026:Array<Book> = [
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1280771091i/7170627.jpg",
         currentlyReading: true,
         // rating: 5,
-        commentary:"Probably definitely will not finish this this year.",
+        commentary:"Probably definitely will not finish this this year!",
         order: 0, 
     },
 ]
@@ -232,7 +233,7 @@ export default function Reading(){
     return(
         <>
         <h1>barretts little bookshelf:</h1>
-        <p> insert pic of home book shelf </p>
+        <img id="bk-bookshelf" src={bookshelfImage} alt="image of my home bookshelf with a bunch of cameras on the top row and books on the bottom"/>
 
         <p> 🚨 warning: i only read bangers and mostly rate everything 5 stars because i am unable to think critically</p>
 
@@ -244,16 +245,14 @@ export default function Reading(){
 
         <h3>read in 2026:</h3>
         {books2026.map((currentBook)=>
-            <SingleBook key={currentBook.order} bookDetails={currentBook}/>
+            currentBook.currentlyReading == false ?
+            <SingleBook key={currentBook.order} bookDetails={currentBook}/> : <></>
          )}
 
         <h3>read in 2025:</h3>
         {books2025.map((currentBook)=>
             <SingleBook key={currentBook.order} bookDetails={currentBook}/>
          )}
-        <p>
-            <strong>{books2025[0].title}</strong> by {books2025[0].author}
-        </p>
         </>
     )
 }

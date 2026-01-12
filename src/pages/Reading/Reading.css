@@ -1,0 +1,27 @@
+#bk-bookshelf {
+    width:100%;
+}
+
+.book-card{
+    margin: auto 20px;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.book-img {
+    max-height: 200px;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+.book-deets{
+    margin: 40px;
+}
+
+.book-title{
+    font-weight: 900;
+}
+
+.commentary{
+    font-style: italic;
+}
