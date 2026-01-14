@@ -1,20 +1,47 @@
 import './Searching.css'
+import SearchItem from '../../components/SearchItem'
+
+export interface SearchQuery {
+    query: string,
+}
+
+const queries: Array<SearchQuery> = [
+    {
+        query: "king k rool dk64"
+    },
+    {
+        query: "gerran howell interview"
+    },
+    {
+        query: "gerran howell young dracula"
+    },
+    {
+        query: "connor storrie youtube"
+    },
+    {
+        query: "fujifilm xt5"
+    },
+    {
+        query: "fujifilm x100vi"
+    },
+    {
+        query: "denver fire"
+    },
+    {
+        query: "sourdough recipe"
+    },
+]
 
 export default function Searching(){
     return(
         <>
-        <h1>some things i have been googling (for your entertainment):</h1>
-        <p>you can click on these to experience what it was like for me to google them</p>
-        <ul>
-            <li>king k rool dk64</li>
-            <li>gerran howell interview</li>
-            <li>gerran howell young dracula</li>
-            <li>connor storrie youtube</li>
-            <li>fujifilm xt5</li>
-            <li>fujifilm x100vi</li>
-            <li>denver fire</li>
-            <li>sourdough recipe</li>
-        </ul>
+            <h1>some things i have been googling (for your entertainment):</h1>
+            <p>you can click on any these to experience what it was like for me to google them</p>
+            <ul>
+                {queries.map((singleQuery) => (
+                    <SearchItem key={singleQuery.query} query={singleQuery.query} />
+                ))}
+            </ul>
         </>
     )
 }
