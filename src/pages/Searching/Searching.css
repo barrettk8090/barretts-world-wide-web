@@ -1,0 +1,13 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.query-item {
+    padding:10px;
+    font-size:2rem;
+}
+
+.query-item > a:hover{
+    color: orange;
+}

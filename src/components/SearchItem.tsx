@@ -7,10 +7,10 @@ export default function SearchItem({ query }: SingleQueryProp){
     const googleUrl: string = googleBase + query.split(" ").join("+")
 
     return(
-        <li className="query-item">
+        <span className="query-item">
             <a href={googleUrl} target="_blank" rel="noopener noreferrer">
-                {query}
+            🔍 {query}
             </a>
-        </li>
+        </span>
     )
 }
