@@ -36,7 +36,7 @@ export default function Searching(){
     return(
         <>
             <h1>some things i have been googling <br/>(for your entertainment):</h1>
-            <p>you can click on any these to experience what it was like for me to google them</p>
+            <p>you can click on any of these to experience what it was like for me to google them</p>
             <div className="search-container">
                 {queries.map((singleQuery) => (
                     <SearchItem key={singleQuery.query} query={singleQuery.query} />
