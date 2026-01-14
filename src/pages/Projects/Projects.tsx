@@ -24,6 +24,10 @@ const projects: Array<Project> = [
     {
         name: "Unnamed Standby Project",
         description: "Building a beautiful iOS app to serve as a Standby mode replacement that also functions as a personal assistant."
+    },
+    {
+        name: "Barretts World Wide Web",
+        description: "This website. A personal little space on the internet to grow with, and into. 🌱"
     }
 ]
 
@@ -33,7 +37,7 @@ export default function Projects(){
     return(
         <div>
             <h1>projects</h1>
-            <p>These are some of the programming projects ive worked on recently:</p>
+            <p>These are some of the programming projects ive worked on recently (more soon):</p>
 
             {projects.map((project, index) => (
                 <ProjectModule key={project.name || index} project={project} />
