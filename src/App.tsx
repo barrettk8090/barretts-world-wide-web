@@ -19,6 +19,7 @@ import Learning from './pages/Learning/Learning';
 import Watching from './pages/Watching/Watching';
 import Reading from './pages/Reading/Reading';
 import Searching from './pages/Searching/Searching';
+import Donate from './pages/Donate/Donate';
 
 function App() {
 
@@ -60,6 +61,9 @@ function App() {
         <Route
           path="/searching"
           element={<Searching/>}/>
+        <Route
+          path="/donate"
+          element={<Donate/>}/>
       </Routes>
     </Router>
     <Footer/>
