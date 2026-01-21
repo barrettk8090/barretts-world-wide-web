@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Outlet,
 } from "react-router-dom";
 
 
@@ -20,54 +21,43 @@ import Watching from './pages/Watching/Watching';
 import Reading from './pages/Reading/Reading';
 import Searching from './pages/Searching/Searching';
 import Donate from './pages/Donate/Donate';
+import TheDream from './pages/The-Dream/TheDream';
+
+function MainLayout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
 
 function App() {
 
   return (
-    <>
     <Router> 
-      <Navbar/>
       <Routes>
-        <Route 
-          path="/"
-          element={<Home/>}/>  
-        <Route
-          path="/camera-roll"
-          element={<Photos/>}/>
-        <Route 
-          path="/photography"
-          element={<Photography/>}/>
-        <Route
-          path="/blog"
-          element={<PersonalBlog/>}/>
-        <Route
-          path="/fiction"
-          element={<Fiction/>}/>
-        <Route
-        path="/dev-content"
-        element={<DevContent/>}/>
-        <Route
-          path="/projects"
-          element={<Projects/>}/>
-        <Route
-          path="/learning"
-          element={<Learning/>}/>
-        <Route
-          path="/watching"
-          element={<Watching/>}/>
-        <Route
-          path="/reading"
-          element={<Reading/>}/>
-        <Route
-          path="/searching"
-          element={<Searching/>}/>
-        <Route
-          path="/donate"
-          element={<Donate/>}/>
+        {/* awake type shit */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home/>}/>  
+          <Route path="/camera-roll" element={<Photos/>}/>
+          <Route path="/photography" element={<Photography/>}/>
+          <Route path="/blog" element={<PersonalBlog/>}/>
+          <Route path="/fiction" element={<Fiction/>}/>
+          <Route path="/dev-content" element={<DevContent/>}/>
+          <Route path="/projects" element={<Projects/>}/>
+          <Route path="/learning" element={<Learning/>}/>
+          <Route path="/watching" element={<Watching/>}/>
+          <Route path="/reading" element={<Reading/>}/>
+          <Route path="/searching" element={<Searching/>}/>
+          <Route path="/donate" element={<Donate/>}/>
+        </Route>
+
+        {/* dream type shit */}
+        <Route path="/the-dream" element={<TheDream/>}/>
       </Routes>
     </Router>
-    <Footer/>
-    </>
   )
 }
 
