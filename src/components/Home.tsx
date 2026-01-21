@@ -1,5 +1,6 @@
 import Experience from "./Experience"
 import Tasks from "./Tasks"
+import Dreaming from "./Dreaming"
 
 export default function Home(){
     return(
@@ -8,6 +9,7 @@ export default function Home(){
             <p>🚧 this site is (intentionally) under very active construction, partner 🤠 </p>
             <Experience/>
             <Tasks/>
+            <Dreaming/>
         </div>
 
     )
