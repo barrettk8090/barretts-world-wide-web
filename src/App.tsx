@@ -14,6 +14,7 @@ import Photos from './pages/Photos/Photos';
 import Photography from './pages/Photography/Photography';
 import Fiction from './pages/Fiction/Fiction';
 import PersonalBlog from './pages/PersonalBlog/PersonalBlog';
+import BlogPost from './pages/PersonalBlog/BlogPost';
 import DevContent from './pages/Dev-Content/DevContent';
 import Projects from './pages/Projects/Projects';
 import Learning from './pages/Learning/Learning';
@@ -44,6 +45,7 @@ function App() {
           <Route path="/camera-roll" element={<Photos/>}/>
           <Route path="/photography" element={<Photography/>}/>
           <Route path="/blog" element={<PersonalBlog/>}/>
+          <Route path="/blog/:slug" element={<BlogPost/>}/>
           <Route path="/fiction" element={<Fiction/>}/>
           <Route path="/dev-content" element={<DevContent/>}/>
           <Route path="/projects" element={<Projects/>}/>

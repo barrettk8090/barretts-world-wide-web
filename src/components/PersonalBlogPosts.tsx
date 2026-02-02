@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 import { parseFrontmatter } from '../utils/contentLoader';
 import type { Post } from '../utils/contentLoader';
 
@@ -46,40 +46,41 @@ export function PersonalBlogPosts() {
     }
   }
 
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric'
+    });
+  }
+
   if (loading) {
-    return <div>Loading posts...</div>;
+    return <div className="blog-list-container">Loading posts...</div>;
   }
 
   if (posts.length === 0) {
     return (
-      <div>
+      <div className="blog-list-container">
         <p>No posts yet! Create your first post at <code>/admin</code></p>
       </div>
     );
   }
 
   return (
-    <div className="blog-posts-container">
-      <h1>bloggy</h1>
-      {posts.map(post => (
-        <article key={post.slug} className="post">
-          <h2>{post.title}</h2>
-          <time>{new Date(post.date).toLocaleDateString()}</time>
-          {post.featuredImage && (
-            <img src={post.featuredImage} alt={post.title} />
-          )}
-          <div className="post-body">
-            <ReactMarkdown>{post.body}</ReactMarkdown>
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="tags">
-              {post.tags.map(tag => (
-                <span key={tag} className="tag">{tag}</span>
-              ))}
-            </div>
-          )}
-        </article>
-      ))}
+    <div className="blog-list-container">
+      <h1>blog</h1>
+      <ul className="blog-list">
+        {posts.map(post => (
+          <li key={post.slug} className="blog-list-item">
+            <Link to={`/blog/${post.slug}`} className="blog-list-link">
+              <span className="blog-list-title">{post.title}</span>
+              <span className="blog-list-separator"> - </span>
+              <span className="blog-list-date">{formatDate(post.date)}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

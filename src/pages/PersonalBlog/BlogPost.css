@@ -1,0 +1,207 @@
+.blog-post-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.blog-post-loading,
+.blog-post-error {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.blog-post-error h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-error p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.back-to-blog {
+  font-family: "Lora";
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+
+}
+
+.back-to-blog:hover {
+  color: black;
+}
+
+.blog-post {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.blog-post-header {
+  margin-bottom: 2.5rem;
+}
+
+.blog-post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+}
+
+.blog-post-date {
+  display: block;
+  color: black;
+  font-size: 0.95rem;
+}
+
+.blog-post-featured-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.blog-post-content {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #000000;
+}
+
+.blog-post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.blog-post-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.blog-post-content a {
+  color: #0066cc;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-post-content a:hover {
+  color: #004499;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-post-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-content blockquote {
+  border-left: 3px solid #ddd;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  color: #555;
+  font-style: italic;
+}
+
+.blog-post-content code {
+  background: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+.blog-post-content pre {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-post-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.blog-post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.blog-post-content hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 2.5rem 0;
+}
+
+.blog-post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.blog-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blog-post-tag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .blog-post-container {
+    padding: 3rem 2rem;
+  }
+
+  .blog-post-title {
+    font-size: 2.5rem;
+  }
+
+  .blog-post-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .blog-post-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .blog-post-content h3 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .blog-post-container {
+    padding: 4rem 2rem;
+  }
+
+  .blog-post-title {
+    font-size: 2.75rem;
+  }
+}
+
