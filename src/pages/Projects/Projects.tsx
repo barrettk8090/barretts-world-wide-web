@@ -1,5 +1,6 @@
 import './Projects.css'
 import ProjectModule from "../../components/ProjectModule"
+import Experience from '../../components/Experience'
 
 
 export interface Project {
@@ -38,6 +39,7 @@ export default function Projects(){
 
     return(
         <div>
+            <Experience/>
             <h1>projects</h1>
             <p>These are some of the programming projects I've worked on recently (more soon):</p>
             <div className="project-container">

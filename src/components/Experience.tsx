@@ -1,7 +1,7 @@
 export default function Experience() {
     return (
         <div>
-            <h2>career stuff! 👇</h2>
+            <h1>career</h1>
             <ul>
                 <li>software engineer, developer relations @ <a target="_blank" href="https://www.dimo.org/">dimo</a> | 2024 - present</li>
                 <li>full stack software engineer, freelance contract @ <a target="_blank" href="https://www.sirch.ai/">sirch</a> | 2024 </li>

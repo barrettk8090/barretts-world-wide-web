@@ -201,11 +201,20 @@ const books2025:Array<Book> = [
 
 const books2026:Array<Book> = [
     {
+        title: "Wizard and Glass, The Dark Tower #4",
+        author: "Stephen King",
+        image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1309203148i/534678.jpg",
+        currentlyReading: true,
+        // rating: 5,
+        commentary:"",
+        order: 3, 
+    },
+    {
         title: "The Waste Lands, The Dark Tower #3",
         author: "Stephen King",
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1554304745i/94767.jpg",
-        currentlyReading: true,
-        // rating: 5,
+        currentlyReading: false,
+        rating: 5,
         commentary:"",
         order: 2, 
     },

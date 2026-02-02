@@ -21,6 +21,146 @@ h1, h2, h3, h4, h5, h6, p, li, button {
     color:blue;
 }
 
+/* Home back link */
+.home-back-link {
+    display: inline-block;
+    font-family: "Lora";
+    font-size: 0.9rem;
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.home-back-link:hover {
+    opacity: 1;
+}
+
+/* Home Page Styles */
+.home-container {
+    max-width: 600px;
+    margin: 0 ;
+    padding: 2rem 1rem;
+}
+
+.home-header {
+    margin-bottom: 3rem;
+}
+
+.home-header h1 {
+    font-size: 3.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.home-tagline {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.home-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.home-nav-item {
+    position: relative;
+}
+
+.home-nav-item > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-heading {
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.home-heading:hover {
+    opacity: 0.6;
+}
+
+.home-heading.expandable {
+    position: relative;
+}
+
+.home-heading.expandable::after {
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+
+/* Submenu with smooth animation */
+.home-submenu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    overflow: hidden;
+}
+
+.home-submenu.open {
+    grid-template-rows: 1fr;
+}
+
+.home-submenu > a {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.home-submenu a {
+    display: block;
+    font-size: 1.4rem;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    color: blue;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+    font-family: "Lora";
+}
+
+.home-submenu a:hover {
+    opacity: 0.6;
+}
+
+/* Better animation using inner wrapper */
+.home-submenu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+    opacity: 0;
+}
+
+.home-submenu.open {
+    max-height: 300px;
+    opacity: 1;
+    transition: max-height 0.35s ease-in, opacity 0.25s ease-in;
+}
+
+@media (max-width: 480px) {
+    .home-header h1 {
+        font-size: 2rem;
+    }
+    
+    .home-heading {
+        font-size: 2rem;
+    }
+    
+    .home-submenu a {
+        font-size: 1.2rem;
+    }
+}
+
 .dream-container {
     position: fixed;
     bottom: calc(1rem + env(safe-area-inset-bottom, 0px));

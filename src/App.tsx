@@ -6,6 +6,8 @@ import {
   Routes,
   Route,
   Outlet,
+  Link,
+  useLocation,
 } from "react-router-dom";
 
 
@@ -25,11 +27,16 @@ import Donate from './pages/Donate/Donate';
 import TheDream from './pages/The-Dream/TheDream';
 
 function MainLayout() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
     <>
-      <Navbar />
+      {!isHome && (
+        <Link to="/" className="home-back-link">HOME</Link>
+      )}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
