@@ -56,6 +56,19 @@ h1, h2, h3, h4, h5, h6, p, li, button {
     opacity: 1;
 }
 
+/* Sticky home bar */
+.home-bar {
+    position: sticky;
+    top: 0;
+    background-color: #F5F5F5;
+    z-index: 50;
+    padding-top: 0.25rem;
+}
+
+.home-bar hr {
+    margin: 0;
+}
+
 /* Home Page Styles */
 .home-container {
     max-width: 600px;

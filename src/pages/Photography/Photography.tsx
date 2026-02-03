@@ -32,7 +32,7 @@ export default function Photography() {
 
   return (
     <>
-      <h1>my photography :)</h1>
+      <h1>from a camera</h1>
       <div className="container">
       { professionalPhotos.length > 0 && (
         <div className="photo-stream">

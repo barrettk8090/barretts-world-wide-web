@@ -30,7 +30,7 @@ export default function Photos() {
 
   return (
     <>
-      <h1>my camera roll :)</h1>
+      <h1>from a phone</h1>
       <div className="container">
       { personalPhotos.length > 0 && (
         <div className="photo-stream">

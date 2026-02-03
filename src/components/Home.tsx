@@ -47,8 +47,8 @@ export default function Home() {
                         photography
                     </h2>
                     <div className={`home-submenu ${openPhotos ? 'open' : ''}`}>
-                        <Link to="/photography">photography</Link>
-                        <Link to="/camera-roll">camera roll</Link>
+                        <Link to="/photography">from a camera</Link>
+                        <Link to="/camera-roll">from a phone</Link>
                     </div>
                 </div>
 

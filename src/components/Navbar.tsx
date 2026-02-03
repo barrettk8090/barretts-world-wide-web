@@ -50,8 +50,8 @@ export default function Navbar(){
                 { 
                     openPhotos ? 
                         <ul>
-                                <li><Link to="/photography">photography</Link></li>
-                                <li><Link to="/camera-roll">camera roll</Link></li>
+                                <li><Link to="/photography">from a camera</Link></li>
+                                <li><Link to="/camera-roll">from a phone</Link></li>
                         </ul> : <></>
                 }
 

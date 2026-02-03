@@ -1,12 +1,12 @@
 import './Fiction.css'
-import alien from '../../assets/alien.jpeg'
+import bob from '../../assets/bob.jpg'
 
 export default function Fiction(){
     return(
         <div className="fiction-container">
-            <h1>coming soon -- but ive recently been writing:</h1>
-            <p>a brief snippet of a longer story that i want to tell, where aliens are involved, and they kinda look like elephants, and they have a strange ritual, where elder generations pass down their memories to the younger generations, and well, i should just get back to writing the thing instead of trying to explain it here while this page is labeled as 'coming soon'(ish)</p>
-            <img className="alien-image" src={alien} alt="a pencil drawing of an alien that looks like an elephant but with weird skin folds and added features"/>
+            <h1>This page is under construction!</h1>
+            <p>Coming soon!</p>
+            <img className="construction-image" src={bob} alt="Bob the Builder"/>
         </div>
     )
 }

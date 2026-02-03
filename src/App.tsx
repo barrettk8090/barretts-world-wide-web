@@ -34,7 +34,7 @@ function MainLayout() {
     <div className="page-wrapper">
       <main className="page-content">
         {!isHome && (
-          <div>
+          <div className="home-bar">
             <Link to="/" className="home-back-link">HOME</Link>
             <hr/>
           </div>

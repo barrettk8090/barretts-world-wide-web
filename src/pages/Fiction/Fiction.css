@@ -1,10 +1,21 @@
 .fiction-container {
   max-width: 80%;
-  margin: auto
+  margin: auto;
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.alien-image {
-  max-width: 80%;
+.fiction-container h1 {
+  margin-bottom: 10px;
+}
+
+.fiction-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.construction-image {
+  max-width: 300px;
   height: auto;
   display: block;
   margin: 20px auto;
