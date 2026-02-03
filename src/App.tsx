@@ -31,13 +31,18 @@ function MainLayout() {
   const isHome = location.pathname === '/';
 
   return (
-    <>
-      {!isHome && (
-        <Link to="/" className="home-back-link">HOME</Link>
-      )}
-      <Outlet />
-      {/* <Footer /> */}
-    </>
+    <div className="page-wrapper">
+      <main className="page-content">
+        {!isHome && (
+          <div>
+            <Link to="/" className="home-back-link">HOME</Link>
+            <hr/>
+          </div>
+        )}
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

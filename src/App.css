@@ -1,6 +1,25 @@
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #F5F5F5;
     margin: 5px;
+}
+
+#root {
+    min-height: 100%;
+}
+
+/* Sticky footer layout */
+.page-wrapper {
+    min-height: calc(100vh - 10px); /* account for body margin */
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1;
 }
 
 .lora-reg {
