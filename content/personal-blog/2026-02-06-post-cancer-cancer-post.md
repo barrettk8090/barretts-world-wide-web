@@ -97,7 +97,7 @@ The procedure itself was easy, but I do remember coming out of my little twiligh
 
 ![](/images/uploads/img_5332_original.jpg)
 
-^ that tongue-looking thing is my tumor! 
+*^ that tongue-looking thing is my tumor!* 
 
 The rest of the weekend was like living in limbo – I was waiting for biopsy results to confirm what I basically already knew, although I wouldn’t get the stage of the cancer until after surgery later on. Right after the colonoscopy, I had three thoughts/visions:
 
