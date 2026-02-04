@@ -15,7 +15,7 @@ But the story is a lot longer than that (also *appears to be* still ongoing). An
 
 Also just a little warning: I’m really not shying away from the nasty shitty details in here (pun intended) in case it ends up helping someone share their symptoms with a doctor. So look away if you must!
 
-<hr/>
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\__
 
 ## 😴 First Symptoms
 
