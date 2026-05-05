@@ -59,6 +59,17 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
         tags?: string[];
       };
 
+      // Contentful built-in taxonomy tags live on entry.metadata.tags
+      const metadataTags = (entry as unknown as {
+        metadata?: { tags?: { sys: { id: string } }[] };
+      }).metadata?.tags?.map((t) => t.sys.id) ?? [];
+
+      // Custom tags field on the Photo content type
+      const fieldTags = fields.tags ?? [];
+
+      // Merge both, deduplicate
+      const tags = Array.from(new Set([...metadataTags, ...fieldTags]));
+
       let imageUrl = '';
       if (fields.image && 'fields' in fields.image && fields.image.fields?.file?.url) {
         imageUrl = `https:${fields.image.fields.file.url}`;
@@ -69,7 +80,7 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
         title: fields.title,
         imageUrl,
         caption: fields.caption,
-        tags: fields.tags,
+        tags: tags.length > 0 ? tags : undefined,
       };
     });
 }

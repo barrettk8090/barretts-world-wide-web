@@ -5,6 +5,7 @@ import './Home.css';
 
 export default function Home() {
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,17 +27,46 @@ export default function Home() {
     );
   }
 
+  const allTags = Array.from(
+    new Set(photos.flatMap((p) => p.tags ?? []))
+  );
+  console.log('[Home] photos:', photos.map((p) => ({ title: p.title, tags: p.tags })));
+
+  const visible = activeTag
+    ? photos.filter((p) => p.tags?.includes(activeTag))
+    : photos;
+
+  function handleTagClick(tag: string) {
+    setActiveTag((prev) => (prev === tag ? null : tag));
+  }
+
   return (
-    <div className="photo-feed">
-      {photos.map((photo) => (
-        <div key={photo.id} className="photo-slide">
-          <img
-            src={`${photo.imageUrl}?w=1920&fm=webp&q=85`}
-            alt={photo.caption || photo.title}
-            className="photo-slide-img"
-          />
+    <>
+      {allTags.length > 0 && (
+        <div className="photo-filters">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`photo-filter-btn${activeTag === tag ? ' active' : ''}`}
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
+            </button>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+
+      <div className="photo-feed">
+        {visible.map((photo) => (
+          <div key={photo.id} className="photo-slide">
+            <img
+              src={`${photo.imageUrl}?w=1920&fm=webp&q=85`}
+              alt={photo.caption || photo.title}
+              className="photo-slide-img"
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
