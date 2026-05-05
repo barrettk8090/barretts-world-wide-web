@@ -1,91 +1,72 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import Dreaming from "./Dreaming"
+import { useEffect, useState } from 'react';
+import { getPhotostreamPhotos } from '../services/contentful';
+import type { Photo } from '../services/contentful';
+import './Home.css';
 
 export default function Home() {
-    const [openPhotos, setOpenPhotos] = useState(false)
-    const [openWriting, setOpenWriting] = useState(false)
-    const [openMisc, setOpenMisc] = useState(false)
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    function toggleSection(section: 'photos' | 'writing' | 'misc') {
-        if (section === 'photos') {
-            setOpenPhotos(!openPhotos)
-            setOpenWriting(false)
-            setOpenMisc(false)
-        } else if (section === 'writing') {
-            setOpenWriting(!openWriting)
-            setOpenPhotos(false)
-            setOpenMisc(false)
-        } else if (section === 'misc') {
-            setOpenMisc(!openMisc)
-            setOpenPhotos(false)
-            setOpenWriting(false)
-        }
-    }
+  useEffect(() => {
+    getPhotostreamPhotos()
+      .then(setPhotos)
+      .catch((err) => console.error('Error loading photos:', err))
+      .finally(() => setLoading(false));
+  }, []);
 
+  if (loading) {
+    return <div className="photo-loading" />;
+  }
+
+  if (photos.length === 0) {
     return (
-        <div className="home-container">
-            <header className="home-header">
-                <h1>barrett kowalsky</h1>
-                <p className="home-tagline">i am a guy doing a bunch of different stuff. based in denver, co.</p>
-            </header>
+      <div className="photo-empty">
+        <p>Photos coming soon.</p>
+      </div>
+    );
+  }
 
-            <nav className="home-nav">
-                {/* Experience - Direct Link */}
-                <div className="home-nav-item">
-                    <Link to="/projects">
-                        <h2 className="home-heading">experience</h2>
-                    </Link>
-                </div>
+  const allTags = Array.from(
+    new Set(photos.flatMap((p) => p.tags ?? []))
+  );
+  console.log('[Home] photos:', photos.map((p) => ({ title: p.title, tags: p.tags })));
 
-                {/* Photography - Expandable */}
-                <div className="home-nav-item">
-                    <h2 
-                        className={`home-heading expandable ${openPhotos ? 'open' : ''}`}
-                        onClick={() => toggleSection('photos')}
-                    >
-                        photography
-                    </h2>
-                    <div className={`home-submenu ${openPhotos ? 'open' : ''}`}>
-                        <Link to="/photography">from a camera</Link>
-                        <Link to="/camera-roll">from a phone</Link>
-                    </div>
-                </div>
+  const visible = activeTag
+    ? photos.filter((p) => p.tags?.includes(activeTag))
+    : photos;
 
-                {/* Writing - Expandable */}
-                <div className="home-nav-item">
-                    <h2 
-                        className={`home-heading expandable ${openWriting ? 'open' : ''}`}
-                        onClick={() => toggleSection('writing')}
-                    >
-                        writing
-                    </h2>
-                    <div className={`home-submenu ${openWriting ? 'open' : ''}`}>
-                        <Link to="/blog">blog</Link>
-                        <Link to="/fiction">fiction</Link>
-                        <Link to="/dev-content">developer content</Link>
-                        <a href="https://github.com/barrettk8090" target="_blank" rel="noopener noreferrer">code</a>
-                    </div>
-                </div>
+  function handleTagClick(tag: string) {
+    setActiveTag((prev) => (prev === tag ? null : tag));
+  }
 
-                {/* Misc - Expandable */}
-                <div className="home-nav-item">
-                    <h2 
-                        className={`home-heading expandable ${openMisc ? 'open' : ''}`}
-                        onClick={() => toggleSection('misc')}
-                    >
-                        misc
-                    </h2>
-                    <div className={`home-submenu ${openMisc ? 'open' : ''}`}>
-                        {/* <Link to="/learning">i'm learning</Link> */}
-                        <Link to="/watching">i'm watching</Link>
-                        <Link to="/reading">i'm reading</Link>
-                        <Link to="/searching">i'm searching</Link>
-                    </div>
-                </div>
-            </nav>
-
-            <Dreaming />
+  return (
+    <>
+      {allTags.length > 0 && (
+        <div className="photo-filters">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`photo-filter-btn${activeTag === tag ? ' active' : ''}`}
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
+            </button>
+          ))}
         </div>
-    )
+      )}
+
+      <div className="photo-feed">
+        {visible.map((photo) => (
+          <div key={photo.id} className="photo-slide">
+            <img
+              src={`${photo.imageUrl}?w=1920&fm=webp&q=85`}
+              alt={photo.caption || photo.title}
+              className="photo-slide-img"
+            />
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }

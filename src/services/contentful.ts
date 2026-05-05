@@ -1,0 +1,243 @@
+import { createClient } from 'contentful';
+import type { EntryFieldTypes } from 'contentful';
+
+const client = createClient({
+  space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+  accessToken: import.meta.env.VITE_CONTENTFUL_DELIVERY_TOKEN,
+  environment: import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || 'master',
+});
+
+// --- Photo ---
+
+interface PhotoSkeleton {
+  contentTypeId: 'photo';
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    image: EntryFieldTypes.AssetLink;
+    caption?: EntryFieldTypes.Symbol;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  };
+}
+
+export interface Photo {
+  id: string;
+  title: string;
+  imageUrl: string;
+  caption?: string;
+  tags?: string[];
+}
+
+// --- Photostream ---
+
+interface PhotostreamSkeleton {
+  contentTypeId: 'photostream';
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    photos: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<PhotoSkeleton>>;
+  };
+}
+
+export async function getPhotostreamPhotos(): Promise<Photo[]> {
+  const response = await client.getEntries<PhotostreamSkeleton>({
+    content_type: 'photostream',
+    include: 3,
+    limit: 1,
+  });
+
+  if (response.items.length === 0) return [];
+
+  const photostream = response.items[0];
+  const photoRefs = photostream.fields.photos;
+
+  return photoRefs
+    .filter((ref): ref is typeof ref & { fields: Record<string, unknown> } => 'fields' in ref)
+    .map((entry) => {
+      const fields = entry.fields as {
+        title: string;
+        image: { fields?: { file?: { url?: string } }; sys?: { type: string } };
+        caption?: string;
+        tags?: string[];
+      };
+
+      // Contentful built-in taxonomy tags live on entry.metadata.tags
+      const metadataTags = (entry as unknown as {
+        metadata?: { tags?: { sys: { id: string } }[] };
+      }).metadata?.tags?.map((t) => t.sys.id) ?? [];
+
+      // Custom tags field on the Photo content type
+      const fieldTags = fields.tags ?? [];
+
+      // Merge both, deduplicate
+      const tags = Array.from(new Set([...metadataTags, ...fieldTags]));
+
+      let imageUrl = '';
+      if (fields.image && 'fields' in fields.image && fields.image.fields?.file?.url) {
+        imageUrl = `https:${fields.image.fields.file.url}`;
+      }
+
+      return {
+        id: (entry as { sys: { id: string } }).sys.id,
+        title: fields.title,
+        imageUrl,
+        caption: fields.caption,
+        tags: tags.length > 0 ? tags : undefined,
+      };
+    });
+}
+
+// --- Blog Post ---
+
+interface BlogPostSkeleton {
+  contentTypeId: 'blogPost';
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    date: EntryFieldTypes.Date;
+    body: EntryFieldTypes.RichText;
+    featuredImage?: EntryFieldTypes.AssetLink;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  };
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  body: unknown;
+  featuredImageUrl?: string;
+  tags?: string[];
+}
+
+function parseBlogEntry(entry: { sys: { id: string }; fields: Record<string, unknown> }): BlogPost {
+  const fields = entry.fields as {
+    title: string;
+    slug: string;
+    date: string;
+    body: unknown;
+    featuredImage?: { fields?: { file?: { url?: string } } };
+    tags?: string[];
+  };
+
+  const featuredImageUrl = fields.featuredImage?.fields?.file?.url
+    ? `https:${fields.featuredImage.fields.file.url}`
+    : undefined;
+
+  return {
+    id: entry.sys.id,
+    title: fields.title,
+    slug: fields.slug,
+    date: fields.date,
+    body: fields.body,
+    featuredImageUrl,
+    tags: fields.tags,
+  };
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  const response = await client.getEntries<BlogPostSkeleton>({
+    content_type: 'blogPost',
+    order: ['-fields.date'],
+    limit: 100,
+  });
+
+  return response.items.map(parseBlogEntry);
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  const response = await client.getEntries<BlogPostSkeleton>({
+    content_type: 'blogPost',
+    'fields.slug': slug,
+    limit: 1,
+  });
+
+  if (response.items.length === 0) return null;
+  return parseBlogEntry(response.items[0]);
+}
+
+// --- Experience ---
+
+interface ExperienceSkeleton {
+  contentTypeId: 'experience';
+  fields: {
+    role: EntryFieldTypes.Symbol;
+    company: EntryFieldTypes.Symbol;
+    companyUrl?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    startYear: EntryFieldTypes.Integer;
+    endYear?: EntryFieldTypes.Integer;
+    order: EntryFieldTypes.Integer;
+  };
+}
+
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  companyUrl?: string;
+  description?: string;
+  startYear: number;
+  endYear?: number;
+  order: number;
+}
+
+export async function getExperiences(): Promise<Experience[]> {
+  const response = await client.getEntries<ExperienceSkeleton>({
+    content_type: 'experience',
+    order: ['fields.order'],
+    limit: 100,
+  });
+
+  return response.items.map((entry) => ({
+    id: entry.sys.id,
+    role: entry.fields.role,
+    company: entry.fields.company,
+    companyUrl: entry.fields.companyUrl,
+    description: entry.fields.description,
+    startYear: entry.fields.startYear,
+    endYear: entry.fields.endYear,
+    order: entry.fields.order,
+  }));
+}
+
+// --- Project ---
+
+interface ProjectSkeleton {
+  contentTypeId: 'project';
+  fields: {
+    name: EntryFieldTypes.Symbol;
+    company?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    link?: EntryFieldTypes.Symbol;
+    githubUrl?: EntryFieldTypes.Symbol;
+    order: EntryFieldTypes.Integer;
+  };
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  company?: string;
+  description?: string;
+  link?: string;
+  githubUrl?: string;
+  order: number;
+}
+
+export async function getProjects(): Promise<Project[]> {
+  const response = await client.getEntries<ProjectSkeleton>({
+    content_type: 'project',
+    order: ['fields.order'],
+    limit: 100,
+  });
+
+  return response.items.map((entry) => ({
+    id: entry.sys.id,
+    name: entry.fields.name,
+    company: entry.fields.company,
+    description: entry.fields.description,
+    link: entry.fields.link,
+    githubUrl: entry.fields.githubUrl,
+    order: entry.fields.order,
+  }));
+}
