@@ -1,0 +1,78 @@
+.cv-container {
+  max-width: 680px;
+  margin: 0;
+  padding: 2rem 1.5rem;
+}
+
+.cv-section {
+  margin-bottom: 3rem;
+}
+
+.cv-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cv-experience-list {
+  padding-left: 1.25rem;
+}
+
+.cv-experience-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.cv-experience-list a {
+  color: #0066cc;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cv-experience-list a:hover {
+  color: orange;
+}
+
+.cv-description {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.cv-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.cv-project h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.cv-project p {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.6;
+}
+
+.cv-project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.cv-project-links a {
+  font-family: "Lora", serif;
+  font-size: 0.9rem;
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cv-project-links a:hover {
+  color: orange;
+}
+
+@media (min-width: 768px) {
+  .cv-container {
+    padding: 3rem 2rem;
+  }
+}

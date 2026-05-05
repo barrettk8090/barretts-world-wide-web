@@ -1,14 +1,14 @@
-export default function Footer(){
-    return (
-        <div>
-            <hr/>
-            <ul>
-                <li><a target="_blank" href="https://www.linkedin.com/in/barrettkowalsky/">linkedin</a></li>
-                <li><a target="_blank" href="https://github.com/barrettk8090">github</a></li>
-                <li><a target="_blank" href="https://www.instagram.com/barrettkowalsky">instagram</a></li>
-                <li><a target="_blank" href="mailto:barrettkowalsky@gmail.com">please email me</a></li>
-            </ul>
-            <p> made by a human being in typescript and react (if you even care) ❤️</p>
-        </div>
-    )
+import './Footer.css';
+
+export default function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="site-footer-links">
+        <a href="https://www.linkedin.com/in/barrettkowalsky/" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://github.com/barrettk8090" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://www.instagram.com/barrettkowalsky" target="_blank" rel="noopener noreferrer">instagram</a>
+        <a href="mailto:barrettkowalsky@gmail.com">email</a>
+      </div>
+    </footer>
+  );
 }

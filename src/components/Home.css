@@ -1,0 +1,39 @@
+.photo-feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.5rem 0 3rem;
+}
+
+.photo-slide {
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-slide-img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+.photo-loading {
+  height: 100vh;
+}
+
+.photo-empty {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-empty p {
+  font-family: "Lora", serif;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}

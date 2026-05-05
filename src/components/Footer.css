@@ -1,0 +1,24 @@
+.site-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.site-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer-links a {
+  font-family: "Lora", serif;
+  font-size: 0.85rem;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer-links a:hover {
+  opacity: 1;
+}
