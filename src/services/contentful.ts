@@ -241,3 +241,48 @@ export async function getProjects(): Promise<Project[]> {
     order: entry.fields.order,
   }));
 }
+
+// --- About ---
+
+interface AboutSkeleton {
+  contentTypeId: 'about';
+  fields: {
+    name: EntryFieldTypes.Symbol;
+    body: EntryFieldTypes.RichText;
+    photo?: EntryFieldTypes.AssetLink;
+  };
+}
+
+export interface About {
+  id: string;
+  name: string;
+  body: unknown;
+  photoUrl?: string;
+}
+
+export async function getAbout(): Promise<About | null> {
+  const response = await client.getEntries<AboutSkeleton>({
+    content_type: 'about',
+    limit: 1,
+  });
+
+  if (response.items.length === 0) return null;
+
+  const entry = response.items[0];
+  const fields = entry.fields as unknown as {
+    name: string;
+    body: unknown;
+    photo?: { fields?: { file?: { url?: string } } };
+  };
+
+  const photoUrl = fields.photo?.fields?.file?.url
+    ? `https:${fields.photo.fields.file.url}`
+    : undefined;
+
+  return {
+    id: entry.sys.id,
+    name: fields.name,
+    body: fields.body,
+    photoUrl,
+  };
+}

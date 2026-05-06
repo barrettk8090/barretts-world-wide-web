@@ -1,13 +1,5 @@
 .blog-list-container {
-  max-width: 95%;
-  margin: 0;
-  padding: 2rem 1rem;
-}
-
-.blog-list-container h1 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  padding: 3rem 1.5rem;
 }
 
 .blog-list {
@@ -17,56 +9,64 @@
 }
 
 .blog-list-item {
-  margin-bottom: 0.75rem;
+  margin-bottom: 3.5rem;
 }
 
 .blog-list-link {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+  display: block;
   text-decoration: none;
   color: inherit;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  transition: color 0.2s ease;
 }
 
-.blog-list-link:hover {
-  color: orange;
-}
-
+/* Large title */
 .blog-list-title {
-  font-weight: 500;
+  display: inline-block;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  position: relative;
 }
 
-.blog-list-separator {
-  white-space: pre;
+/* Animated squiggle underline */
+.blog-list-title::after {
+  content: '';
+  display: block;
+  height: 8px;
+  margin-top: 4px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M0 4 Q5 0 10 4 Q15 8 20 4' fill='none' stroke='%23000' stroke-width='1.75'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 20px 8px;
+  opacity: 0;
+  animation: squiggle-move 0.35s linear infinite;
+  transition: opacity 0.2s ease;
 }
 
-.blog-list-date {
-  color: #666;
-  font-size: 0.95rem;
+.blog-list-link:hover .blog-list-title::after {
+  opacity: 1;
 }
 
-.blog-list-link:hover .blog-list-date {
-  color: orange;
+@keyframes squiggle-move {
+  from { background-position-x: 0; }
+  to   { background-position-x: 20px; }
+}
+
+/* Snippet */
+.blog-list-snippet {
+  margin: 0.75rem 0 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.6;
+  max-width: 600px;
+}
+
+.blog-list-read-more {
+  opacity: 1;
+  font-style: italic;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
   .blog-list-container {
-    max-width: none;
-    padding: 3rem 2rem;
-  }
-
-  .blog-list-container h1 {
-    font-size: 2rem;
-  }
-
-  .blog-list-link {
-    font-size: 1.2rem;
-  }
-
-  .blog-list-date {
-    font-size: 1rem;
+    padding: 4rem 2rem;
   }
 }

@@ -11,6 +11,7 @@ import Home from './components/Home';
 import PersonalBlog from './pages/PersonalBlog/PersonalBlog';
 import BlogPost from './pages/PersonalBlog/BlogPost';
 import CV from './pages/CV/CV';
+import About from './pages/About/About';
 
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/blog" element={<PersonalBlog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/cv" element={<CV />} />
