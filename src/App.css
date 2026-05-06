@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Wingman";
+  src: url('./assets/TAYWingman.woff2') format('woff2'),
+       url('./assets/TAYWingman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  ascent-override: 80%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -24,9 +36,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p, li, button {
-  font-family: "Lora", serif;
+  font-family: "Wingman", serif;
 }
 
 a {
-  font-family: "Lora", serif;
+  font-family: "Wingman", serif;
 }
