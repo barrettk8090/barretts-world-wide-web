@@ -1,26 +1,104 @@
-.photo-feed {
+/* Masonry grid — JS distributes photos left-to-right, CSS stacks each column */
+.photo-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  padding: 1.5rem 0 3rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1rem 3rem;
 }
 
-.photo-slide {
+.photo-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.photo-grid-item {
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.photo-grid-img {
+  display: block;
   width: 100%;
-  max-height: 90vh;
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.photo-grid-item:hover .photo-grid-img {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+/* Single column on mobile */
+@media (max-width: 520px) {
+  .photo-grid {
+    padding: 0.5rem 0.5rem 3rem;
+    gap: 0.5rem;
+  }
+
+  .photo-col {
+    gap: 0.5rem;
+  }
+}
+
+/* Lightbox */
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  cursor: zoom-out;
 }
 
-.photo-slide-img {
-  max-width: 100%;
-  max-height: 90vh;
+.photo-lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
   object-fit: contain;
   display: block;
+  border-radius: 2px;
+  cursor: default;
+  transition: filter 0.3s ease;
 }
 
+.photo-lightbox-img--loading {
+  filter: blur(4px);
+}
+
+.photo-lightbox-caption {
+  margin-top: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Lora", serif;
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 60ch;
+}
+
+.photo-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.photo-lightbox-close:hover {
+  color: #fff;
+}
+
+/* Tag filters */
 .photo-filters {
   display: flex;
   gap: 0.5rem;
