@@ -17,6 +17,12 @@
   margin: 0 0 1.5rem 0;
 }
 
+.about-body,
+.about-body p,
+.about-body li {
+  font-family: "Lora", serif;
+}
+
 .about-body {
   font-size: 1.1rem;
   line-height: 1.75;

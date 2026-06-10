@@ -34,6 +34,16 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 520px) {
+  .site-header-nav {
+    gap: 1rem;
+  }
+
+  .site-header-link {
+    font-size: 0.8rem;
+  }
+}
+
 .site-header-link {
   font-family: "Wingman", serif;
   font-size: 0.95rem;

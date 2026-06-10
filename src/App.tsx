@@ -12,6 +12,7 @@ import PersonalBlog from './pages/PersonalBlog/PersonalBlog';
 import BlogPost from './pages/PersonalBlog/BlogPost';
 import CV from './pages/CV/CV';
 import About from './pages/About/About';
+import VideoPage from './pages/Video/Video';
 
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/blog" element={<PersonalBlog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/cv" element={<CV />} />
+          <Route path="/video" element={<VideoPage />} />
         </Route>
       </Routes>
     </Router>

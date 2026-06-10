@@ -9,6 +9,7 @@ export default function Header() {
         <Link to="/about" className="site-header-link">About</Link>
         <Link to="/blog" className="site-header-link">Notes</Link>
         <Link to="/cv" className="site-header-link">CV</Link>
+        <Link to="/video" className="site-header-link">Film</Link>
       </nav>
     </header>
   );

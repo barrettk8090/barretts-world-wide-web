@@ -64,6 +64,13 @@
   margin-bottom: 2rem;
 }
 
+.blog-post-content,
+.blog-post-content p,
+.blog-post-content li,
+.blog-post-content blockquote {
+  font-family: "Lora", serif;
+}
+
 .blog-post-content {
   font-size: 1.125rem;
   line-height: 1.75;

@@ -242,6 +242,72 @@ export async function getProjects(): Promise<Project[]> {
   }));
 }
 
+// --- Video ---
+
+interface VideoSkeleton {
+  contentTypeId: '64zkKNNThTr2nmDUvyOp3T';
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    videoUrl: EntryFieldTypes.Symbol;
+    caption?: EntryFieldTypes.Symbol;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    order?: EntryFieldTypes.Integer;
+  };
+}
+
+export interface Video {
+  id: string;
+  title: string;
+  videoUrl: string;
+  caption?: string;
+  tags?: string[];
+  order?: number;
+}
+
+export async function getVideos(): Promise<Video[]> {
+  const response = await client.getEntries<VideoSkeleton>({
+    content_type: '64zkKNNThTr2nmDUvyOp3T',
+    order: ['fields.order'],
+    limit: 100,
+  });
+
+  return response.items.map((entry) => {
+    const fields = entry.fields as unknown as {
+      title: string;
+      videoUrl: string;
+      caption?: string;
+      tags?: string[];
+      order?: number;
+    };
+    return {
+      id: entry.sys.id,
+      title: fields.title,
+      videoUrl: fields.videoUrl,
+      caption: fields.caption,
+      tags: fields.tags,
+      order: fields.order,
+    };
+  });
+}
+
+// --- Video Page ---
+
+interface VideoPageSkeleton {
+  contentTypeId: '5A0OkEcgBtZVJHn0ad7K6J';
+  fields: {
+    intro: EntryFieldTypes.Symbol;
+  };
+}
+
+export async function getVideoPageIntro(): Promise<string | null> {
+  const response = await client.getEntries<VideoPageSkeleton>({
+    content_type: '5A0OkEcgBtZVJHn0ad7K6J',
+    limit: 1,
+  });
+  if (response.items.length === 0) return null;
+  return (response.items[0].fields as unknown as { intro: string }).intro;
+}
+
 // --- About ---
 
 interface AboutSkeleton {

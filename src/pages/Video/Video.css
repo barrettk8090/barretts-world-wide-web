@@ -1,0 +1,153 @@
+/* Single centered column; each video ~70vh tall via width derived from aspect ratio */
+.video-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 2rem 1.5rem 5rem;
+}
+
+.video-page-intro {
+  font-family: "Lora", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  text-align: center;
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* width = 70vh * (16/9) so height naturally becomes 70vh */
+.video-item {
+  width: min(90vw, calc(70vh * 16 / 9));
+  cursor: pointer;
+}
+
+.video-thumb-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #000;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.video-item:hover .video-thumb {
+  transform: scale(1.02);
+  opacity: 0.85;
+}
+
+.video-play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.video-item:hover .video-play-icon {
+  opacity: 0.5;
+}
+
+.video-caption {
+  margin: 0.75rem 0 0;
+  font-family: "Lora", serif;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Lightbox */
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.94);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.video-embed-wrap {
+  width: min(92vw, 1100px);
+  aspect-ratio: 16 / 9;
+  cursor: default;
+}
+
+.video-embed {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.video-lightbox-caption {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Lora", serif;
+  font-size: 0.9rem;
+  text-align: center;
+  max-width: 60ch;
+}
+
+.video-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.video-lightbox-close:hover {
+  color: #fff;
+}
+
+.video-loading {
+  height: 100vh;
+}
+
+.video-empty {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.video-empty p {
+  font-family: "Wingman", serif;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 520px) {
+  .video-item {
+    width: 90vw;
+  }
+
+  .video-list {
+    gap: 2.5rem;
+    padding: 1.5rem 0.75rem 4rem;
+  }
+}
