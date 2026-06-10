@@ -38,6 +38,12 @@
   opacity: 0.7;
 }
 
+.cv-experience-list li,
+.cv-description,
+.cv-project p {
+  font-family: "Lora", serif;
+}
+
 .cv-projects {
   display: flex;
   flex-direction: column;
