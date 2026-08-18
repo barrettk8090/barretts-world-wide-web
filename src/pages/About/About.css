@@ -20,7 +20,7 @@
 .about-body,
 .about-body p,
 .about-body li {
-  font-family: "Lora", serif;
+  font-family: var(--font-body);
 }
 
 .about-body {

@@ -25,6 +25,8 @@ export interface Photo {
   imageUrl: string;
   caption?: string;
   tags?: string[];
+  width?: number;
+  height?: number;
 }
 
 // --- Photostream ---
@@ -54,7 +56,15 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
     .map((entry) => {
       const fields = entry.fields as {
         title: string;
-        image: { fields?: { file?: { url?: string } }; sys?: { type: string } };
+        image: {
+          fields?: {
+            file?: {
+              url?: string;
+              details?: { image?: { width?: number; height?: number } };
+            };
+          };
+          sys?: { type: string };
+        };
         caption?: string;
         tags?: string[];
       };
@@ -75,12 +85,16 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
         imageUrl = `https:${fields.image.fields.file.url}`;
       }
 
+      const dimensions = fields.image?.fields?.file?.details?.image;
+
       return {
         id: (entry as { sys: { id: string } }).sys.id,
         title: fields.title,
         imageUrl,
         caption: fields.caption,
         tags: tags.length > 0 ? tags : undefined,
+        width: dimensions?.width,
+        height: dimensions?.height,
       };
     });
 }
@@ -314,9 +328,25 @@ interface AboutSkeleton {
   contentTypeId: 'about';
   fields: {
     name: EntryFieldTypes.Symbol;
+    bio?: EntryFieldTypes.Symbol;
     body: EntryFieldTypes.RichText;
     photo?: EntryFieldTypes.AssetLink;
   };
+}
+
+/** Short bio shown in the nav rail. Fetched on its own so the header
+ *  doesn't have to pull down the whole About rich text body. */
+export async function getSiteBio(): Promise<string | null> {
+  const response = await client.getEntries<AboutSkeleton>({
+    content_type: 'about',
+    limit: 1,
+    select: ['fields.bio'],
+  });
+
+  if (response.items.length === 0) return null;
+
+  const fields = response.items[0].fields as unknown as { bio?: string };
+  return fields.bio ?? null;
 }
 
 export interface About {

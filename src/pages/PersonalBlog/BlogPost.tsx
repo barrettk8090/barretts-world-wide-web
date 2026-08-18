@@ -80,7 +80,7 @@ export default function BlogPost() {
         <div className="blog-post-error">
           <h1>Post Not Found</h1>
           <p>Sorry, we couldn't find the post you're looking for.</p>
-          <Link to="/blog" className="back-to-blog">&larr; Back to Notes</Link>
+          <Link to="/blog" className="back-to-blog">&larr; Back to Blog</Link>
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ export default function BlogPost() {
     <div className="blog-post-container">
       <article className="blog-post">
         <header className="blog-post-header">
-          <Link to="/blog" className="back-to-blog">&larr; Back to Notes</Link>
+          <Link to="/blog" className="back-to-blog">&larr; Back to Blog</Link>
           <h1 className="blog-post-title">{post.title}</h1>
           <time className="blog-post-date">{formatDate(post.date)}</time>
         </header>

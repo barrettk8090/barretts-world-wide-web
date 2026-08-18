@@ -1,13 +1,19 @@
-@font-face {
-  font-family: "Wingman";
-  src: url('./assets/TAYWingman.woff2') format('woff2'),
-       url('./assets/TAYWingman.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  ascent-override: 80%;
-  descent-override: 20%;
-  line-gap-override: 0%;
+:root {
+  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-body: var(--font-display);
+
+  --color-ink: #111111;
+  --color-accent: #b34a2f;
+  --color-rule: rgba(0, 0, 0, 0.2);
+
+  /* Left rail (desktop only) */
+  --rail-width: 232px;
+  --rail-pad-x: 2.25rem;
+  --rail-pad-y: 2.75rem;
+
+  /* Photostream (desktop only) */
+  --stream-pad: 3.5rem;
+  --stream-gap: 4rem;
 }
 
 html, body {
@@ -36,9 +42,20 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p, li, button {
-  font-family: "Wingman", serif;
+  font-family: var(--font-display);
 }
 
 a {
-  font-family: "Wingman", serif;
+  font-family: var(--font-display);
+}
+
+/* Desktop: the header becomes a fixed left rail, so inset the whole page. */
+@media (min-width: 900px) {
+  .page-wrapper {
+    padding-left: var(--rail-width);
+  }
+
+  .page-content {
+    padding-top: 0;
+  }
 }

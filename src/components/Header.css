@@ -1,3 +1,4 @@
+/* Mobile / tablet: fixed bar across the top */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -15,23 +16,47 @@
 }
 
 .site-header-name {
-  font-family: "Wingman", serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1;
   color: inherit;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .site-header-name:hover {
-  opacity: 0.6;
+  color: var(--color-accent);
+}
+
+/* The bio is rail-only; the top bar has no room for it */
+.site-header-bio {
+  display: none;
 }
 
 .site-header-nav {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+}
+
+.site-header-link {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-header-link:hover {
+  color: var(--color-accent);
+}
+
+.site-header-link--active {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 520px) {
@@ -52,16 +77,52 @@
   }
 }
 
-.site-header-link {
-  font-family: "Wingman", serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1;
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
+/* Desktop: fixed rail down the left edge, small text, no chrome */
+@media (min-width: 900px) {
+  .site-header {
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: var(--rail-width);
+    padding: var(--rail-pad-y) var(--rail-pad-x);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    overflow-y: auto;
+  }
 
-.site-header-link:hover {
-  opacity: 0.6;
+  .site-header-name {
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-ink);
+  }
+
+  .site-header-bio {
+    display: block;
+    margin: 0.6rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    opacity: 0.55;
+  }
+
+  .site-header-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  .site-header-link {
+    font-size: 0.9rem;
+    letter-spacing: 0.015em;
+    color: var(--color-ink);
+  }
 }
