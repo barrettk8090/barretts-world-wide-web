@@ -11,6 +11,9 @@
   --rail-pad-x: 2.25rem;
   --rail-pad-y: 2.75rem;
 
+  /* Sticky top bar (mobile/tablet only) */
+  --mobile-bar-height: 60px;
+
   /* Photostream (desktop only) */
   --stream-pad: 3.5rem;
   --stream-gap: 4rem;
@@ -38,7 +41,7 @@ body {
 
 .page-content {
   flex: 1;
-  padding-top: 52px; /* account for fixed header */
+  padding-top: var(--mobile-bar-height); /* account for fixed header */
 }
 
 h1, h2, h3, h4, h5, h6, p, li, button {

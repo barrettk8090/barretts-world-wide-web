@@ -35,24 +35,27 @@ interface PhotostreamSkeleton {
   contentTypeId: 'photostream';
   fields: {
     title: EntryFieldTypes.Symbol;
-    photos: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<PhotoSkeleton>>;
+    slug?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    photos?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<PhotoSkeleton>>;
   };
 }
 
-export async function getPhotostreamPhotos(): Promise<Photo[]> {
-  const response = await client.getEntries<PhotostreamSkeleton>({
-    content_type: 'photostream',
-    include: 3,
-    limit: 1,
-  });
+export interface Photostream {
+  id: string;
+  title: string;
+  slug: string;
+  description?: string;
+  photos: Photo[];
+}
 
-  if (response.items.length === 0) return [];
-
-  const photostream = response.items[0];
-  const photoRefs = photostream.fields.photos;
+function parsePhotoRefs(photoRefs: unknown[] | undefined): Photo[] {
+  if (!photoRefs) return [];
 
   return photoRefs
-    .filter((ref): ref is typeof ref & { fields: Record<string, unknown> } => 'fields' in ref)
+    .filter((ref): ref is { sys: { id: string }; fields: Record<string, unknown> } =>
+      typeof ref === 'object' && ref !== null && 'fields' in ref
+    )
     .map((entry) => {
       const fields = entry.fields as {
         title: string;
@@ -88,7 +91,7 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
       const dimensions = fields.image?.fields?.file?.details?.image;
 
       return {
-        id: (entry as { sys: { id: string } }).sys.id,
+        id: entry.sys.id,
         title: fields.title,
         imageUrl,
         caption: fields.caption,
@@ -97,6 +100,39 @@ export async function getPhotostreamPhotos(): Promise<Photo[]> {
         height: dimensions?.height,
       };
     });
+}
+
+/** Fetches a single named photostream (e.g. "home", "people", "places") by its slug. */
+export async function getPhotostream(slug: string): Promise<Photostream | null> {
+  const response = await client.getEntries<PhotostreamSkeleton>({
+    content_type: 'photostream',
+    'fields.slug': slug,
+    include: 3,
+    limit: 1,
+  });
+
+  if (response.items.length === 0) return null;
+
+  const entry = response.items[0];
+  const fields = entry.fields as unknown as {
+    title: string;
+    slug?: string;
+    description?: string;
+    photos?: unknown[];
+  };
+
+  return {
+    id: entry.sys.id,
+    title: fields.title,
+    slug: fields.slug ?? slug,
+    description: fields.description,
+    photos: parsePhotoRefs(fields.photos),
+  };
+}
+
+export async function getPhotostreamPhotos(): Promise<Photo[]> {
+  const stream = await getPhotostream('home');
+  return stream?.photos ?? [];
 }
 
 // --- Blog Post ---

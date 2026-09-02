@@ -1,0 +1,38 @@
+.stream-header {
+  padding: 2rem 1.5rem 0;
+}
+
+.stream-title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+  color: var(--color-ink);
+}
+
+.stream-description {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 46ch;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+@media (min-width: 900px) {
+  .stream-header {
+    padding: var(--stream-pad) var(--stream-pad) 0;
+  }
+
+  .stream-title {
+    font-size: 3.25rem;
+  }
+
+  .stream-description {
+    font-size: 1.15rem;
+  }
+}

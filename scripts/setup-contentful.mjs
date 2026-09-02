@@ -161,10 +161,23 @@ const photostream = {
       required: true,
     },
     {
+      id: 'slug',
+      name: 'Slug',
+      type: 'Symbol',
+      required: false,
+      validations: [{ unique: true }],
+    },
+    {
+      id: 'description',
+      name: 'Description',
+      type: 'Text',
+      required: false,
+    },
+    {
       id: 'photos',
       name: 'Photos',
       type: 'Array',
-      required: true,
+      required: false,
       items: {
         type: 'Link',
         linkType: 'Entry',
@@ -330,8 +343,9 @@ async function main() {
   console.log('\nDone! Content models are set up in Contentful.');
   console.log('\nWorkflow:');
   console.log('1. Create Photo entries (each with a title, image asset, optional caption/tags)');
-  console.log('2. Create a single Photostream entry, drag-and-drop Photo references in order');
-  console.log('3. The homepage fetches the Photostream and displays photos in that order');
+  console.log('2. Create a Photostream entry per stream (slug: home/people/places/things/climate/archive),');
+  console.log('   drag-and-drop Photo references in order, and fill in a Title/Description');
+  console.log('3. Each page fetches its Photostream by slug and displays photos in that order');
 }
 
 main().catch(console.error);
